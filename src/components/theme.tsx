@@ -1,7 +1,9 @@
 import { css } from "@stitches/react";
 
-const royalBlue = "65, 105, 225";
-// const royalBlue = "255, 105, 100";
+// do NOT export
+const values = {
+  royalBlue: "65, 105, 225",
+};
 
 export const theme = {
   accentColor: "rgb(var(--accent-color))",
@@ -9,6 +11,7 @@ export const theme = {
   background: "rgba(var(--bg-color), var(--bg-opacity))",
   backgroundAccent: "rgba(var(--accent-color), var(--bg-opacity))",
   // backgroundAccentFull: "rgba(var(--accent-color), var(--bg-opacity))",
+  borderColor: "var(--border-color)",
 
   onAccent: "var(--on-accent-color)",
 
@@ -26,8 +29,10 @@ export const modernTheme = css({
   background: "#ffffff",
   color: "#000000d8",
 
-  "--accent-color": royalBlue,
+  "--accent-color": values.royalBlue,
   "--bg-color": "0, 0, 0",
+  "--border-color": "transparent",
+  // "--border-color": "hsla(0, 0%, 61%, 0.38)",
 
   "--on-accent-color": "#ffffff",
 
@@ -50,7 +55,7 @@ export const cyberpunkTheme = css({
   transition: "all 300ms",
   background: "#121212",
   color: "#ffffffd8",
-  "--accent-color": royalBlue,
+  "--accent-color": values.royalBlue,
   "--bg-color": "255, 255, 255",
 
   "--on-accent-color": "#000000d8",

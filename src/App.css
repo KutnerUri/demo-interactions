@@ -5,7 +5,5 @@
   gap: 2em;
   align-items: center;
 
-  --accent-rgb: 65, 105, 225;
-
   border: 1px solid black;
 }
