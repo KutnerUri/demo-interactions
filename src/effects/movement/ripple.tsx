@@ -14,12 +14,8 @@ export const ripple = css({
   animation: `${gradientKeyframes} ${times.sloth} ease infinite`,
 });
 
-// @ts-ignore
-ripple.displayName = "ripple";
-
-
 // background-color: $shocking-pink;
-// width: 1rem; 
+// width: 1rem;
 // height: 1rem;
 // position: absolute;
 // border-radius: 50%;

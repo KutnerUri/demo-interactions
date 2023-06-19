@@ -21,6 +21,3 @@ export const shake = css({
   "backface-visibility": "hidden",
   perspective: "1000px",
 });
-
-// @ts-ignore
-shake.displayName = "shake";

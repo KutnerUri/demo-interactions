@@ -10,6 +10,3 @@ const rippleOutKeyframes = keyframes({
 export const rippleOut = css({
   animation: `${rippleOutKeyframes} ${times.long} ease infinite`,
 });
-
-// @ts-ignore
-rippleOut.displayName = "shockwscrave";

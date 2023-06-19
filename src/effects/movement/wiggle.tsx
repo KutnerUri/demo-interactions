@@ -12,6 +12,3 @@ export const wiggle = css({
   "backface-visibility": "hidden",
   perspective: "1000px",
 });
-
-// @ts-ignore‰
-wiggle.displayName = "wiggle";
