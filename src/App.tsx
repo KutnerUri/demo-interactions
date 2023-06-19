@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CssComponent } from "@stitches/react/types/styled-component";
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Item } from "./components/item";
+// import { motionAnimations } from "./effects/movement";
+import { changeAnimation } from "./effects/change";
+
+export type Anim = {
+  style: CssComponent;
+  displayName: string;
+  duration?: number;
+};
 
 function App() {
+  const [running, setRunning] = useState(false);
+  const [idx, setIdx] = useState(0);
+  const total = changeAnimation.length;
+  const animation = changeAnimation[idx];
+
+  useEffect(() => {
+    if (!running) return () => {};
+    const { duration = 1000 } = animation;
+
+    const tid = setTimeout(() => {
+      setIdx((x) => (x + 1) % total);
+    }, duration);
+    return () => clearTimeout(tid);
+  }, [running, animation, total]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className={["App"].join(" ")}>
+        <Item className={animation.style()} />
+        {/* <Item className={animation.style()} /> */}
+        <span>{animation.displayName}</span>
+      </div>
+      <div className={["App"].join(" ")}>
+        <input
+          type="checkbox"
+          checked={running}
+          onChange={() => setRunning((x) => !x)}
+        />
+        start
+      </div>
     </div>
   );
 }
