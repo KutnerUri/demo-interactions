@@ -1,0 +1,26 @@
+import { css } from "@stitches/react";
+
+export const shadow01 = css({ boxShadow: "var(--shadow-layer-1)" });
+export const shadow02 = css({ boxShadow: "var(--shadow-layer-2)" });
+export const shadow03 = css({ boxShadow: "var(--shadow-layer-3)" });
+export const shadow04 = css({ boxShadow: "var(--shadow-layer-4)" });
+export const shadow05 = css({ boxShadow: "var(--shadow-layer-5)" });
+export const shadow06 = css({ boxShadow: "var(--shadow-layer-6)" });
+export const shadow07 = css({ boxShadow: "var(--shadow-layer-7)" });
+export const shadow08 = css({ boxShadow: "var(--shadow-layer-8)" });
+export const shadow09 = css({ boxShadow: "var(--shadow-layer-9)" });
+export const shadow10 = css({ boxShadow: "var(--shadow-layer-10)" });
+export const shadow11 = css({ boxShadow: "var(--shadow-layer-11)" });
+export const shadow12 = css({ boxShadow: "var(--shadow-layer-12)" });
+export const shadow13 = css({ boxShadow: "var(--shadow-layer-13)" });
+export const shadow14 = css({ boxShadow: "var(--shadow-layer-14)" });
+export const shadow15 = css({ boxShadow: "var(--shadow-layer-15)" });
+export const shadow16 = css({ boxShadow: "var(--shadow-layer-16)" });
+export const shadow17 = css({ boxShadow: "var(--shadow-layer-17)" });
+export const shadow18 = css({ boxShadow: "var(--shadow-layer-18)" });
+export const shadow19 = css({ boxShadow: "var(--shadow-layer-19)" });
+export const shadow20 = css({ boxShadow: "var(--shadow-layer-20)" });
+export const shadow21 = css({ boxShadow: "var(--shadow-layer-21)" });
+export const shadow22 = css({ boxShadow: "var(--shadow-layer-22)" });
+export const shadow23 = css({ boxShadow: "var(--shadow-layer-23)" });
+export const shadow24 = css({ boxShadow: "var(--shadow-layer-24)" });

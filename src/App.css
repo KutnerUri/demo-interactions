@@ -1,4 +1,4 @@
-.App {
+.card {
   margin: 2em;
   padding: 3em 5em;
   display: flex;
@@ -6,4 +6,9 @@
   align-items: center;
 
   border: 1px solid black;
+}
+
+/* just to make sure */
+:root {
+  font-size: 16px;
 }

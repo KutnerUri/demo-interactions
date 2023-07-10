@@ -5,5 +5,5 @@ export const unsaturate = css({
 });
 
 export const hotBorder = css({
-//   outlineColor: "hsl(345, 76%, 61%)",
+  borderColor: "rgb(56, 75%, 60%)",
 });

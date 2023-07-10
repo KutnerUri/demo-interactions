@@ -1,10 +1,16 @@
 import { css } from "@stitches/react";
-import { Anim } from "../App";
+import { Anim } from "../anim";
 
 export const restingStyle: Anim = {
   style: css({}),
   displayName: "resting",
   duration: 1000,
+};
+
+export const shortRest: Anim = {
+  style: css({}),
+  displayName: "resting",
+  duration: 500,
 };
 
 export const countdown3 = { style: css({}), displayName: "3" };

@@ -11,6 +11,8 @@ export const theme = {
   background: "rgba(var(--bg-color), var(--bg-opacity))",
   backgroundAccent: "rgba(var(--accent-color), var(--bg-opacity))",
   // backgroundAccentFull: "rgba(var(--accent-color), var(--bg-opacity))",
+  /** @deprecated */
+  invisBorder: "var(--invis-border-color)",
   borderColor: "var(--border-color)",
 
   onAccent: "var(--on-accent-color)",
@@ -22,7 +24,12 @@ export const theme = {
   dangerColor: "rgb(var(--error-color))",
   dangerBgColor: "rgb(var(--error-color), var(--bg-opacity))",
   onDangerColor: "var(--on-error-color, var(--on-accent-color))",
-};
+
+  neutralColor: "rgb(var(--neutral-color))",
+  neutralBgColor: "rgb(var(--neutral-color), var(--bg-opacity))",
+  onNeutralColor: "var(--on-neutral-color, var(--on-accent-color))",
+
+} as const;
 
 export const modernTheme = css({
   transition: "all 300ms",
@@ -31,13 +38,14 @@ export const modernTheme = css({
 
   "--accent-color": values.royalBlue,
   "--bg-color": "0, 0, 0",
-  "--border-color": "transparent",
-  // "--border-color": "hsla(0, 0%, 61%, 0.38)",
+  /** @deprecated */
+  "--invis-border-color": "transparent",
+  "--border-color": "hsla(0, 0%, 61%, 0.61)",
 
   "--on-accent-color": "#ffffff",
 
-  "--success-color": "63, 134, 60",
-  "--error-color": "240, 71, 71",
+  "--success-color": "42 156, 38",
+  "--error-color": "215, 91, 91",
   "--warn-color": "240, 192, 48",
   "--neutral-color": "120, 120, 120",
 

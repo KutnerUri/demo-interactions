@@ -1,4 +1,4 @@
-import { Anim } from "../../App";
+import { Anim } from "../../anim";
 import { restingStyle } from "../resting";
 import { doubleBlink, shine } from "./blink";
 import {

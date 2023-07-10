@@ -9,7 +9,7 @@ export const doubleBlinkKeyframes = keyframes({
 
 const pulseKeyframes = keyframes({
   "0%, 100%": { opacity: 1 },
-  "38%, 61%": { opacity: 0.76 },
+  "38%, 61%": { opacity: 0.61 },
 });
 
 // "don't blink, or you'll me me"

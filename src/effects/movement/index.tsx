@@ -1,11 +1,11 @@
-import { shake } from "./shake";
-import { wiggle } from "./wiggle";
-import { rippleOut } from "./ripple-out";
-import { skew } from "./skew";
-import { shiftDown, shiftUp } from "./shift";
-import { grow, heartbeat, shrink } from "./resize";
-import { Anim } from "../../App";
+import { Anim } from "../../anim";
 import { countdown1, countdown2, countdown3, restingStyle } from "../resting";
+import { grow, heartbeat, shrink } from "./resize";
+import { rippleOut } from "./ripple-out";
+import { shake } from "./shake";
+import { shiftDown, shiftUp } from "./shift";
+import { skew } from "./skew";
+import { wiggle } from "./wiggle";
 
 export const motionAnimations: Anim[] = [
   countdown3,

@@ -10,9 +10,9 @@ export const Item = styled("div", {
   height: "3em",
   //   outline: "5px solid hsl(0, 0%, 85%)",
   borderRadius: "4px",
-  border: `2px solid ${theme.borderColor}`,
+  border: `1px solid ${theme.invisBorder}`,
   background: theme.backgroundAccent,
-  transition: `all ${times.normal}`,
+  transition: `all ${times.normal} ease-in-out`,
 
   "--bg-opacity": 0.23,
 
