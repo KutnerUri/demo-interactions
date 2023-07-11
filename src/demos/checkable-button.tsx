@@ -1,23 +1,21 @@
 import { useState } from "react";
 import { InteractionIndicator } from "../components/interaction-indicator";
-import { InteractiveElement } from "../components/interactive";
-import { modernTheme } from "../components/theme";
-import { shadowTheme } from "../theme/shadows";
+import { InteractiveButton } from "../components/interactive-button";
 
-function CheckableButton() {
+export function CheckableButton() {
   const [disabled, setDisabled] = useState(false);
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className={[modernTheme(), shadowTheme()].join(" ")}>
+    <>
       <div className="card">
-        <InteractiveElement
+        <InteractiveButton
           disabled={disabled}
           onClick={() => setChecked((x) => !x)}
           on={checked}
         >
           submit
-        </InteractiveElement>
+        </InteractiveButton>
 
         <InteractionIndicator />
       </div>
@@ -29,6 +27,6 @@ function CheckableButton() {
         />
         disable
       </div>
-    </div>
+    </>
   );
 }

@@ -7,7 +7,7 @@ import {
   opacityHigh,
   opacityHigher,
 } from "./opacity-change";
-import { hotBorder } from "./saturation-change";
+import { hueRotate } from "./color-change";
 
 export const changeAnimation: Anim[] = [
   restingStyle,
@@ -21,7 +21,9 @@ export const changeAnimation: Anim[] = [
   restingStyle,
   { style: shine, displayName: "shine", duration: 2000 },
   restingStyle,
-  // { style: hotBorder, displayName: "border change", duration: 2000 },
+  { style: hueRotate, displayName: "hue rotate", duration: 2000 },
+  // saturation change is really non-noticeable
+  // { style: unsaturate, displayName: "unsaturate", duration: 2000 },
 ];
 
 export {};

@@ -12,12 +12,11 @@ const pulseKeyframes = keyframes({
   "38%, 61%": { opacity: 0.61 },
 });
 
-// "don't blink, or you'll me me"
 export const doubleBlink = css({
   animation: `${doubleBlinkKeyframes} ${times.relaxed} `,
 });
 
-// "don't blink, or you'll me me"
+// "don't blink, or you'll miss me"
 export const shine = css({
   animation: `${pulseKeyframes} ${times.sloth} `,
 });

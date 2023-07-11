@@ -20,3 +20,12 @@ export const heartbeatKeyframe = keyframes({
 export const heartbeat = css({
   animation: `${heartbeatKeyframe} ${times.relaxed} ease infinite`,
 });
+
+export const pulseKeyframes = keyframes({
+  "0%, 100%": { transform: "scale(1)" },
+  "50%": { transform: "scale(1.2)" },
+});
+
+export const pulse = css({
+  animation: `${pulseKeyframes} ${times.relaxed} ease infinite`,
+});

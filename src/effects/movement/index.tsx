@@ -1,6 +1,5 @@
 import { Anim } from "../../anim";
 import { countdown1, countdown2, countdown3, restingStyle } from "../resting";
-import { grow, heartbeat, shrink } from "./resize";
 import { rippleOut } from "./ripple-out";
 import { shake } from "./shake";
 import { shiftDown, shiftUp } from "./shift";
@@ -22,10 +21,5 @@ export const motionAnimations: Anim[] = [
   { style: wiggle, displayName: "wiggle", duration: 2000 },
   restingStyle,
   { style: rippleOut, displayName: "ripple out", duration: 3000 },
-  restingStyle,
-  { style: grow, displayName: "grow", duration: 1500 },
-  { style: shrink, displayName: "shrink", duration: 1000 },
-  restingStyle,
-  { style: heartbeat, displayName: "heartbeat", duration: 3000 },
   restingStyle,
 ];

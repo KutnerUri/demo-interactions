@@ -17,14 +17,6 @@ export const levitate = keyframes({
   "40%, 60%": { transform: "translate(0.1em, 0.2em)" },
 });
 
-export const interactiveStyle = css({
-  cursor: "pointer",
-  "user-select": "none",
-
-  "&:disabled": {
-    cursor: "not-allowed",
-  },
-});
 
 const RADIUS = {
   rest: "2em",
@@ -86,15 +78,16 @@ const itemStyle = css(interactiveStyle, {
 });
 
 const activationStyle = css({
+  color: theme.neutralColor,
   "&:before": {
     display: "inline-block",
     transform: "scale(0.5)",
 
     content: "'○'",
-    color: theme.neutralColor,
   },
 
   "&[aria-checked='true']": {
+    color: theme.accentColor,
     "&:before": {
       content: "'●'",
       color: "inherit",
@@ -117,7 +110,17 @@ const activationStyle = css({
   },
 });
 
-const SUCCESS_AUTO_DURATION = 5000;
+const SUCCESS_AUTO_DURATION = 2000;
+const DEFAULT_SUCCESS_MESSAGE = (
+  <>
+    <b>✓</b> Done
+  </>
+);
+const DEFAULT_ERROR_MESSAGE = (
+  <>
+    <b>✗</b> Failed
+  </>
+);
 
 type HtmlButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -128,18 +131,22 @@ type ButtonProps = Omit<HtmlButtonProps, "onClick"> & {
   on?: boolean;
   successMessage?: ReactNode;
   errorMessage?: ReactNode;
+  successClass?: string;
+  errorClass?: string;
   loader?: ReactNode;
 };
 
 /** An element showcasing the different interactive states */
-export function InteractiveElement({
+export function InteractiveButton({
   className,
   onClick,
   children,
   disabled,
   on,
-  successMessage = "Success!",
-  errorMessage = "Failed!",
+  successMessage = DEFAULT_SUCCESS_MESSAGE,
+  errorMessage = DEFAULT_ERROR_MESSAGE,
+  successClass = accents.success,
+  errorClass = accents.danger,
   loader = <Loader />,
   ...props
 }: ButtonProps) {
@@ -180,8 +187,8 @@ export function InteractiveElement({
         className,
         itemStyle(),
         activated !== undefined && activationStyle(),
-        loadingState === "success" && accents.success,
-        loadingState === "error" && accents.danger
+        loadingState === "success" && successClass,
+        loadingState === "error" && errorClass
       )}
       // cheeky way to implement checkbox behavior for a button
       // use a hidden checkbox and a label instead
