@@ -1,6 +1,6 @@
 import { styled } from "@stitches/react";
 import { times } from "../effects/times";
-import { theme } from "./theme";
+import { theme } from "../style/theme";
 
 // const accentBgColor = "rgba(var(--accent-rgb), var(--bg-opacity, 0.85))";
 

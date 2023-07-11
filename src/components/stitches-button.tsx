@@ -1,6 +1,6 @@
 import { css } from "@stitches/react";
 import { ButtonHTMLAttributes } from "react";
-import { theme } from "./theme";
+import { theme } from "../style/theme";
 
 const vanillaButton = css({
   "user-select": "none",

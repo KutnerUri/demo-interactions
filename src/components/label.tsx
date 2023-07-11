@@ -1,6 +1,6 @@
 import { css } from "@stitches/react";
 import cn from "classnames";
-import { theme } from "./theme";
+import { theme } from "../style/theme";
 
 const labelStyle = css({
   background: theme.backgroundAccent,

@@ -1,5 +1,5 @@
 import { css } from "@stitches/react";
-import { theme } from "../../components/theme";
+import { theme } from "../../style/theme";
 
 export const border = css({
   // TODO - css specificity war - would not happen in a regular project

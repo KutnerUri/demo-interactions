@@ -1,5 +1,5 @@
 import { css, keyframes } from "@stitches/react";
-import { theme } from "../../components/theme";
+import { theme } from "../../style/theme";
 
 export const unsaturate = css({
   filter: "saturate(0)",

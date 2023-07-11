@@ -5,7 +5,7 @@ import { MouseEvent, ReactNode } from "react";
 import { times } from "../effects/times";
 import { accents } from "./accent";
 import { Loader } from "./horiz-loader";
-import { theme } from "./theme";
+import { theme } from "../style/theme";
 
 export const levitate = keyframes({
   "0%, 100%": { transform: "translate(0px, 0.2em)" },
