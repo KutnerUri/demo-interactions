@@ -1,115 +1,11 @@
 import useStateMachine from "@cassiozen/usestatemachine";
-import { css, keyframes } from "@stitches/react";
 import classNames from "classnames";
 import { MouseEvent, ReactNode } from "react";
-import { times } from "../effects/times";
-import { interactiveStyle } from "../style/interactive-style";
-import { theme } from "../style/theme";
-import { accents } from "./accent";
-import { Loader } from "./horiz-loader";
-
-export const levitate = keyframes({
-  "0%, 100%": { transform: "translate(0px, 0.2em)" },
-  "10%, 90%": { transform: "translate(-0.05em, 0.3em)" },
-  "20%, 80%": { transform: "translate(0.05em, 0.10em)" },
-  "30%, 70%": { transform: "translate(-0.1em, 0.2em)" },
-  "45%": { transform: "translate(0em, 0.25em)" },
-  "55%": { transform: "translate(0em, 0.15em)" },
-  "40%, 60%": { transform: "translate(0.1em, 0.2em)" },
-});
-
-const RADIUS = {
-  rest: "2em",
-  focus: "0.25em",
-};
-
-const OPACITY_DISABLED = 0.61;
-const OPACITY_BG = {
-  rest: 0.05,
-  hover: 0.09,
-  active: 0.16,
-  success: 0.09,
-  error: 0.38,
-};
-
-const button = css({
-  display: "inline-block",
-  padding: "0.38em 0.85em",
-  borderRadius: RADIUS.rest,
-  boxSizing: "border-box",
-  fontFamily: "inherit",
-  fontSize: "inherit",
-
-  border: `1px solid ${theme.accentColor}`,
-  background: theme.backgroundAccent,
-  "--bg-opacity": OPACITY_BG.rest,
-  color: theme.accentColor,
-
-  transition: `all ${times.snappy} ease-in-out`,
-  "backface-visibility": "hidden",
-  perspective: "1000px",
-
-  "&:disabled": {
-    opacity: OPACITY_DISABLED,
-    "--bg-opacity": OPACITY_BG.rest,
-    // disable changes from :hover and :active
-    transform: "none",
-    boxShadow: "none",
-  },
-});
-
-const interactiveButton = css({
-  "&:hover": {
-    "--bg-opacity": OPACITY_BG.hover,
-    boxShadow: "var(--shadow-layer-4)",
-  },
-
-  "&:focus-visible": {
-    borderRadius: RADIUS.focus,
-    boxShadow: "var(--shadow-layer-4)",
-  },
-
-  "&:active": {
-    "--bg-opacity": OPACITY_BG.active,
-    transform: "translate(0, 0.2em)", // shift down
-    boxShadow: "var(--shadow-layer-0)",
-
-    animation: `${levitate} ${times.long} infinite linear`,
-    animationDelay: times.long,
-  },
-});
-
-const activationStyle = css({
-  color: theme.neutralColor,
-  "&:before": {
-    display: "inline-block",
-    transform: "scale(0.5)",
-
-    content: "'○'",
-  },
-
-  "&[aria-checked='true']": {
-    color: theme.accentColor,
-    "&:before": {
-      content: "'●'",
-      color: "inherit",
-    },
-
-    boxShadow: "var(--shadow-inset-2)",
-  },
-});
-
-const interactiveActivation = css({
-  "&[aria-checked='true']": {
-    "&:hover": {
-      boxShadow: "var(--shadow-inset-1)",
-    },
-
-    "&:active": {
-      boxShadow: "none",
-    },
-  },
-});
+import { interactiveStyle } from "../../style/interactive-style";
+import { accents } from "../accent";
+import { Loader } from "../horiz-loader";
+import { button, interactiveButton } from "./button-style";
+import { activationStyle, interactiveActivation } from "./checked-button-style";
 
 const SUCCESS_AUTO_DURATION = 2000;
 const DEFAULT_SUCCESS_MESSAGE = (
@@ -127,7 +23,7 @@ type HtmlButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
-type ButtonProps = Omit<HtmlButtonProps, "onClick"> & {
+export type ButtonProps = Omit<HtmlButtonProps, "onClick"> & {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void | Promise<any>;
   on?: boolean;
   successMessage?: ReactNode;

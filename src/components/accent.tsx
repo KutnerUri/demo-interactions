@@ -1,5 +1,4 @@
 import { css } from "@stitches/react";
-import { theme } from "../style/theme";
 
 export type Accent = "success" | "danger" | "warn" | "neutral";
 
