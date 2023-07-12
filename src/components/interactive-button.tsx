@@ -3,9 +3,10 @@ import { css, keyframes } from "@stitches/react";
 import classNames from "classnames";
 import { MouseEvent, ReactNode } from "react";
 import { times } from "../effects/times";
+import { interactiveStyle } from "../style/interactive-style";
+import { theme } from "../style/theme";
 import { accents } from "./accent";
 import { Loader } from "./horiz-loader";
-import { theme } from "../style/theme";
 
 export const levitate = keyframes({
   "0%, 100%": { transform: "translate(0px, 0.2em)" },
@@ -16,7 +17,6 @@ export const levitate = keyframes({
   "55%": { transform: "translate(0em, 0.15em)" },
   "40%, 60%": { transform: "translate(0.1em, 0.2em)" },
 });
-
 
 const RADIUS = {
   rest: "2em",
@@ -32,7 +32,7 @@ const OPACITY_BG = {
   error: 0.38,
 };
 
-const itemStyle = css(interactiveStyle, {
+const button = css({
   display: "inline-block",
   padding: "0.38em 0.85em",
   borderRadius: RADIUS.rest,
@@ -49,6 +49,16 @@ const itemStyle = css(interactiveStyle, {
   "backface-visibility": "hidden",
   perspective: "1000px",
 
+  "&:disabled": {
+    opacity: OPACITY_DISABLED,
+    "--bg-opacity": OPACITY_BG.rest,
+    // disable changes from :hover and :active
+    transform: "none",
+    boxShadow: "none",
+  },
+});
+
+const interactiveButton = css({
   "&:hover": {
     "--bg-opacity": OPACITY_BG.hover,
     boxShadow: "var(--shadow-layer-4)",
@@ -66,14 +76,6 @@ const itemStyle = css(interactiveStyle, {
 
     animation: `${levitate} ${times.long} infinite linear`,
     animationDelay: times.long,
-  },
-
-  "&:disabled": {
-    opacity: OPACITY_DISABLED,
-    "--bg-opacity": OPACITY_BG.rest,
-    // disable changes from :hover and :active
-    transform: "none",
-    boxShadow: "none",
   },
 });
 
@@ -94,18 +96,17 @@ const activationStyle = css({
     },
 
     boxShadow: "var(--shadow-inset-2)",
+  },
+});
 
+const interactiveActivation = css({
+  "&[aria-checked='true']": {
     "&:hover": {
       boxShadow: "var(--shadow-inset-1)",
     },
 
     "&:active": {
       boxShadow: "none",
-    },
-
-    "&:disabled": {
-      // static shadow when disabled:
-      boxShadow: "var(--shadow-inset-2)",
     },
   },
 });
@@ -153,6 +154,8 @@ export function InteractiveButton({
   const [stateMachine, emitLoadingEvent] = useLoadingStateMachine();
   const loadingState = stateMachine.value;
   const activated = on ? "on" : on === false ? "off" : undefined;
+  const interactive = onClick !== undefined && !disabled;
+  const isCheckbox = activated !== undefined;
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     emitLoadingEvent("CLICK");
@@ -185,8 +188,11 @@ export function InteractiveButton({
       disabled={loadingState === "loading" || disabled}
       className={classNames(
         className,
-        itemStyle(),
-        activated !== undefined && activationStyle(),
+        button(),
+        interactive && interactiveStyle(),
+        interactive && interactiveButton(),
+        isCheckbox && activationStyle(),
+        isCheckbox && interactive && interactiveActivation(),
         loadingState === "success" && successClass,
         loadingState === "error" && errorClass
       )}
