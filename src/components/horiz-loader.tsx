@@ -37,7 +37,7 @@ type LoaderProps = React.HTMLAttributes<HTMLSpanElement>;
 
 export const Loader = (props: LoaderProps) => {
   return (
-    <LoadContainer {...props}>
+    <LoadContainer {...props} aria-label="Loading...">
       <span>●</span>
       <span>●</span>
       <span>●</span>
