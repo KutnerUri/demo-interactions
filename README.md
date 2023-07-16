@@ -2,6 +2,8 @@
 
 This is a React project created with Create React App. It showcases a collection of demos illustrating different types of animations and interactive states in user interfaces. These elements are intended to enhance UI/UX design by providing prominence, interaction feedback, and aesthetic value.
 
+👉 live demo [here](here)!
+
 ## Main Features
 
 - **Demos**: The project includes a series of demos located in the `src/demos` directory. Each demo showcases different interactive states and animations using customizable and re-usable components. Examples of these demos include fully-interactive buttons, checkable buttons, animation cycles, and more.
