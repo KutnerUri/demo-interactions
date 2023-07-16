@@ -2,7 +2,7 @@
 
 This is a React project created with Create React App. It showcases a collection of demos illustrating different types of animations and interactive states in user interfaces. These elements are intended to enhance UI/UX design by providing prominence, interaction feedback, and aesthetic value.
 
-👉 live demo [https://kutneruri.github.io/demo-interactions/](here)!
+👉 live demo [here](https://kutneruri.github.io/demo-interactions/)!
 
 ## Main Features
 
