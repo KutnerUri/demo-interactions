@@ -44,7 +44,7 @@ export const modernTheme = css({
 
   "--on-accent-color": "#ffffff",
 
-  "--success-color": "42 156, 38",
+  "--success-color": "42, 156, 38",
   "--error-color": "215, 91, 91",
   "--warn-color": "240, 192, 48",
   "--neutral-color": "120, 120, 120",

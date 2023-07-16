@@ -31,6 +31,7 @@ export type ButtonProps = Omit<HtmlButtonProps, "onClick"> & {
   successClass?: string;
   errorClass?: string;
   loader?: ReactNode;
+  loading?: true | false | undefined | "success" | "error";
 };
 
 /** An element showcasing the different interactive states */
@@ -45,10 +46,12 @@ export function InteractiveButton({
   successClass = accents.success,
   errorClass = accents.danger,
   loader = <Loader />,
+  loading: loadingProp,
   ...props
 }: ButtonProps) {
   const [stateMachine, emitLoadingEvent] = useLoadingStateMachine();
-  const loadingState = stateMachine.value;
+  const loadingState =
+    loadingProp !== undefined ? loadingProp : stateMachine.value;
   const activated = on ? "on" : on === false ? "off" : undefined;
   const interactive = onClick !== undefined && !disabled;
   const isCheckbox = activated !== undefined;
@@ -80,7 +83,6 @@ export function InteractiveButton({
   return (
     <button
       onClick={handleClick}
-      onMouseEnter={(e) => e.target === e.currentTarget && console.log("hover")}
       disabled={loadingState === "loading" || disabled}
       className={classNames(
         className,

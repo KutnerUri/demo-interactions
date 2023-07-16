@@ -2,41 +2,53 @@ import { useState } from "react";
 import { InteractionIndicator } from "../components/interaction-indicator";
 import { InteractiveButton } from "../components/interactive-button";
 
-let first = true;
-const autoResolve = () =>
-  new Promise<void>((resolve, reject) =>
-    setTimeout(() => {
-      if (first) resolve();
-      else reject();
-
-      first = !first;
-    }, 800)
-  );
+let shouldResolve = true;
 
 export function FullyInteractiveButton() {
   const [disabled, setDisabled] = useState(false);
+  const [onoff, setOnoff] = useState<boolean | undefined>(undefined);
+
+  const autoResolve = () =>
+    new Promise<void>((resolve, reject) =>
+      setTimeout(() => {
+        if (shouldResolve) {
+          resolve();
+          setOnoff((x) => (x === undefined ? undefined : !x));
+        } else reject();
+
+        // lazy way to toggle between resolve and reject
+        shouldResolve = !shouldResolve;
+      }, 800)
+    );
 
   return (
     <>
       <div className="card">
-        <InteractiveButton disabled={disabled} onClick={autoResolve}>
+        <InteractiveButton disabled={disabled} onClick={autoResolve} on={onoff}>
           apply
         </InteractiveButton>
 
         <InteractionIndicator />
-
-        {/* <InteractiveElement disabled={disabled} onClick={autoResolve}>
-          cancel
-        </InteractiveElement> */}
       </div>
 
       <div className="card">
-        <input
-          type="checkbox"
-          checked={disabled}
-          onChange={(e) => setDisabled(e.target.checked)}
-        />
-        disable
+        <label>
+          <input
+            type="checkbox"
+            checked={disabled}
+            onChange={(e) => setDisabled(e.target.checked)}
+          />{" "}
+          disable
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            checked={onoff !== undefined}
+            onChange={(e) => setOnoff(e.target.checked ? false : undefined)}
+          />{" "}
+          on-off
+        </label>
       </div>
     </>
   );
