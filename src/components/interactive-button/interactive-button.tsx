@@ -19,10 +19,12 @@ const DEFAULT_ERROR_MESSAGE = (
   </>
 );
 
+type LoadingState = "ready" | "loading" | "success" | "error";
 type HtmlButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
+
 export type ButtonProps = Omit<HtmlButtonProps, "onClick"> & {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void | Promise<any>;
   on?: boolean;
@@ -31,7 +33,7 @@ export type ButtonProps = Omit<HtmlButtonProps, "onClick"> & {
   successClass?: string;
   errorClass?: string;
   loader?: ReactNode;
-  loading?: true | false | undefined | "success" | "error";
+  loading?: undefined | boolean | LoadingState;
 };
 
 /** An element showcasing the different interactive states */
@@ -50,15 +52,14 @@ export function InteractiveButton({
   ...props
 }: ButtonProps) {
   const [stateMachine, emitLoadingEvent] = useLoadingStateMachine();
-  const loadingState =
-    loadingProp !== undefined ? loadingProp : stateMachine.value;
+  const _loading = mergeLoadingState(stateMachine.value, loadingProp);
   const activated = on ? "on" : on === false ? "off" : undefined;
   const interactive = onClick !== undefined && !disabled;
   const isCheckbox = activated !== undefined;
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     emitLoadingEvent("CLICK");
-    if (loadingState === "error") return;
+    if (_loading === "error") return;
 
     const result = onClick?.(e);
     const isPromise = result && result.then;
@@ -75,15 +76,15 @@ export function InteractiveButton({
   };
 
   const content =
-    (loadingState === "success" && successMessage) ||
-    (loadingState === "error" && errorMessage) ||
-    (loadingState === "loading" && loader) ||
+    (_loading === "success" && successMessage) ||
+    (_loading === "error" && errorMessage) ||
+    (_loading === "loading" && loader) ||
     children;
 
   return (
     <button
       onClick={handleClick}
-      disabled={loadingState === "loading" || disabled}
+      disabled={_loading === "loading" || disabled}
       className={classNames(
         className,
         button(),
@@ -91,8 +92,8 @@ export function InteractiveButton({
         interactive && interactiveButton(),
         isCheckbox && activationStyle(),
         isCheckbox && interactive && interactiveActivation(),
-        loadingState === "success" && successClass,
-        loadingState === "error" && errorClass
+        _loading === "success" && successClass,
+        _loading === "error" && errorClass
       )}
       // cheeky way to implement checkbox behavior for a button
       // use a hidden checkbox and a label instead
@@ -124,4 +125,20 @@ function useLoadingStateMachine() {
       error: { on: { CLICK: "ready" } },
     },
   });
+}
+
+function mergeLoadingState(
+  internalState: LoadingState,
+  override: boolean | LoadingState | undefined
+): LoadingState {
+  switch (override) {
+    case undefined:
+      return internalState;
+    case false:
+      return "ready";
+    case true:
+      return "loading";
+  }
+
+  return override;
 }

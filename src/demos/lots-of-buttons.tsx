@@ -13,7 +13,7 @@ export function LotsOfButtons() {
         <InteractiveButton loading="success">done</InteractiveButton>
         <InteractiveButton loading="error">err</InteractiveButton>
         <InteractiveButton on={true}>checked</InteractiveButton>
-        <InteractiveButton on={false}>checked</InteractiveButton>
+        <InteractiveButton on={false}>unchecked</InteractiveButton>
       </div>
     </>
   );

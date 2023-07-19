@@ -17,7 +17,7 @@ export const activationStyle = css({
       color: "inherit",
     },
 
-    boxShadow: "var(--shadow-inset-2)",
+    boxShadow: "var(--shadow-inset-3)",
   },
 });
 
