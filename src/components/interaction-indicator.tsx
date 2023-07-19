@@ -3,8 +3,10 @@ import { times } from "../effects/times";
 
 const indicatorStyle = css({
   pointerEvents: "none",
+  display: "inline-block",
   position: "absolute",
-  left: "15em",
+  left: "13em",
+  marginTop: "-2em",
 });
 
 export function InteractionIndicator() {

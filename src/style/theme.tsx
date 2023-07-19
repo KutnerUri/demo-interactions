@@ -40,7 +40,7 @@ export const modernTheme = css({
   "--bg-color": "0, 0, 0",
   /** @deprecated */
   "--invis-border-color": "transparent",
-  "--border-color": "hsla(0, 0%, 61%, 0.61)",
+  "--border-color": "hsla(0, 0%, 61%, 0.85)",
 
   "--on-accent-color": "#ffffff",
 

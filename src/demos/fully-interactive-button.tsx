@@ -32,6 +32,7 @@ export function FullyInteractiveButton() {
       </div>
 
       <div className="card">
+        <h2>Modifiers</h2>
         <label>
           <input
             type="checkbox"
@@ -40,6 +41,8 @@ export function FullyInteractiveButton() {
           />{" "}
           disable
         </label>
+
+        <br />
 
         <label>
           <input
