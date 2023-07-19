@@ -33,7 +33,7 @@ function Credits() {
       </p>
       <div>
         <img
-          src="/github-mark.png"
+          src="./github-mark.png"
           alt="GitHub Mark"
           width={20}
           height={20}
@@ -43,7 +43,7 @@ function Credits() {
         <a href="https://github.com/KutnerUri/demo-interactions">here</a>
         <br />
         <img
-          src="/medium-logo.png"
+          src="./medium-logo.png"
           alt="GitHub Mark"
           width={20}
           height={20}
